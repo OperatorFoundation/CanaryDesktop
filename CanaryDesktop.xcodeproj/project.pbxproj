@@ -1,0 +1,909 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AE758EC526BDD4320049CE4B /* CanaryDesktopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758EC426BDD4320049CE4B /* CanaryDesktopApp.swift */; };
+		AE758EC726BDD4320049CE4B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758EC626BDD4320049CE4B /* ContentView.swift */; };
+		AE758EC926BDD4330049CE4B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE758EC826BDD4330049CE4B /* Assets.xcassets */; };
+		AE758ECC26BDD4330049CE4B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE758ECB26BDD4330049CE4B /* Preview Assets.xcassets */; };
+		AE758ED826BDD4340049CE4B /* CanaryDesktopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758ED726BDD4340049CE4B /* CanaryDesktopTests.swift */; };
+		AE758EE326BDD4340049CE4B /* CanaryDesktopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758EE226BDD4340049CE4B /* CanaryDesktopUITests.swift */; };
+		AE758F0426BDDDB00049CE4B /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = AE758F0326BDDDB00049CE4B /* ArgumentParser */; };
+		AE758F0726BDDDC10049CE4B /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = AE758F0626BDDDC10049CE4B /* Logging */; };
+		AE758F1026BDDDF00049CE4B /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = AE758F0F26BDDDF00049CE4B /* ZIPFoundation */; };
+		AE7B59BA26BDF24500658107 /* TestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B326BDF24500658107 /* TestController.swift */; };
+		AE7B59BB26BDF24500658107 /* ConnectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B426BDF24500658107 /* ConnectionTest.swift */; };
+		AE7B59BC26BDF24500658107 /* TransportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B526BDF24500658107 /* TransportController.swift */; };
+		AE7B59BD26BDF24500658107 /* AdversaryLabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B626BDF24500658107 /* AdversaryLabController.swift */; };
+		AE7B59BE26BDF24500658107 /* ShapeshifterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B726BDF24500658107 /* ShapeshifterController.swift */; };
+		AE7B59BF26BDF24500658107 /* ResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B826BDF24500658107 /* ResultsController.swift */; };
+		AE7B59C026BDF24500658107 /* TransportConnectionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59B926BDF24500658107 /* TransportConnectionTest.swift */; };
+		AE7B59C726BDF25D00658107 /* KillAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59C126BDF25D00658107 /* KillAll.swift */; };
+		AE7B59C826BDF25D00658107 /* Transport.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59C326BDF25D00658107 /* Transport.swift */; };
+		AE7B59C926BDF25D00658107 /* TestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59C426BDF25D00658107 /* TestResult.swift */; };
+		AE7B59CA26BDF25D00658107 /* WebTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59C526BDF25D00658107 /* WebTest.swift */; };
+		AE7B59CB26BDF25D00658107 /* CanaryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59C626BDF25D00658107 /* CanaryTest.swift */; };
+		AE7B59CE26BDF26800658107 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7B59CD26BDF26800658107 /* Constants.swift */; };
+		AE972D7D26EA936A00FB99E2 /* ReplicantSwiftClient in Frameworks */ = {isa = PBXBuildFile; productRef = AE972D7C26EA936A00FB99E2 /* ReplicantSwiftClient */; };
+		AE972D8026EA93E000FB99E2 /* Transport in Frameworks */ = {isa = PBXBuildFile; productRef = AE972D7F26EA93E000FB99E2 /* Transport */; };
+		AE9C31C526BDEB6D00D70C5C /* Chord in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31C426BDEB6D00D70C5C /* Chord */; };
+		AE9C31C826BDEBE400D70C5C /* AdversaryLabClientCore in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31C726BDEBE400D70C5C /* AdversaryLabClientCore */; };
+		AE9C31CB26BDEC3200D70C5C /* NetUtils in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31CA26BDEC3200D70C5C /* NetUtils */; };
+		AE9C31CE26BDEC5600D70C5C /* Transmission in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31CD26BDEC5600D70C5C /* Transmission */; };
+		AE9C31D126BDEE2100D70C5C /* SwiftQueue in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31D026BDEE2100D70C5C /* SwiftQueue */; };
+		AE9C31D426BDF01100D70C5C /* ShadowSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31D326BDF01100D70C5C /* ShadowSwift */; };
+		AECC0ABD26D5879C00562F26 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = AECC0ABC26D5879C00562F26 /* CMakeLists.txt */; };
+		AECC0ABF26D99A4100562F26 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC0ABE26D99A4100562F26 /* Globals.swift */; };
+		AEE13D4326BDE66600046E38 /* Datable in Frameworks */ = {isa = PBXBuildFile; productRef = AEE13D4226BDE66600046E38 /* Datable */; };
+		AEE13D4626BDE69700046E38 /* Gardener in Frameworks */ = {isa = PBXBuildFile; productRef = AEE13D4526BDE69700046E38 /* Gardener */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AE758ED426BDD4340049CE4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE758EB926BDD4320049CE4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE758EC026BDD4320049CE4B;
+			remoteInfo = CanaryDesktop;
+		};
+		AE758EDF26BDD4340049CE4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AE758EB926BDD4320049CE4B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AE758EC026BDD4320049CE4B;
+			remoteInfo = CanaryDesktop;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		AE758EC126BDD4320049CE4B /* CanaryDesktop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CanaryDesktop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE758EC426BDD4320049CE4B /* CanaryDesktopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanaryDesktopApp.swift; sourceTree = "<group>"; };
+		AE758EC626BDD4320049CE4B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AE758EC826BDD4330049CE4B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AE758ECB26BDD4330049CE4B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AE758ECD26BDD4330049CE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE758ECE26BDD4330049CE4B /* CanaryDesktop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CanaryDesktop.entitlements; sourceTree = "<group>"; };
+		AE758ED326BDD4340049CE4B /* CanaryDesktopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanaryDesktopTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE758ED726BDD4340049CE4B /* CanaryDesktopTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanaryDesktopTests.swift; sourceTree = "<group>"; };
+		AE758ED926BDD4340049CE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE758EDE26BDD4340049CE4B /* CanaryDesktopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CanaryDesktopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE758EE226BDD4340049CE4B /* CanaryDesktopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanaryDesktopUITests.swift; sourceTree = "<group>"; };
+		AE758EE426BDD4340049CE4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE7B59B326BDF24500658107 /* TestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestController.swift; sourceTree = "<group>"; };
+		AE7B59B426BDF24500658107 /* ConnectionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionTest.swift; sourceTree = "<group>"; };
+		AE7B59B526BDF24500658107 /* TransportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportController.swift; sourceTree = "<group>"; };
+		AE7B59B626BDF24500658107 /* AdversaryLabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdversaryLabController.swift; sourceTree = "<group>"; };
+		AE7B59B726BDF24500658107 /* ShapeshifterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeshifterController.swift; sourceTree = "<group>"; };
+		AE7B59B826BDF24500658107 /* ResultsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsController.swift; sourceTree = "<group>"; };
+		AE7B59B926BDF24500658107 /* TransportConnectionTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransportConnectionTest.swift; sourceTree = "<group>"; };
+		AE7B59C126BDF25D00658107 /* KillAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KillAll.swift; sourceTree = "<group>"; };
+		AE7B59C326BDF25D00658107 /* Transport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transport.swift; sourceTree = "<group>"; };
+		AE7B59C426BDF25D00658107 /* TestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestResult.swift; sourceTree = "<group>"; };
+		AE7B59C526BDF25D00658107 /* WebTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebTest.swift; sourceTree = "<group>"; };
+		AE7B59C626BDF25D00658107 /* CanaryTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanaryTest.swift; sourceTree = "<group>"; };
+		AE7B59CD26BDF26800658107 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AECC0ABC26D5879C00562F26 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		AECC0ABE26D99A4100562F26 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AE758EBE26BDD4320049CE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE9C31CB26BDEC3200D70C5C /* NetUtils in Frameworks */,
+				AE9C31D126BDEE2100D70C5C /* SwiftQueue in Frameworks */,
+				AE9C31D426BDF01100D70C5C /* ShadowSwift in Frameworks */,
+				AE758F1026BDDDF00049CE4B /* ZIPFoundation in Frameworks */,
+				AE758F0426BDDDB00049CE4B /* ArgumentParser in Frameworks */,
+				AE758F0726BDDDC10049CE4B /* Logging in Frameworks */,
+				AE972D7D26EA936A00FB99E2 /* ReplicantSwiftClient in Frameworks */,
+				AE9C31C526BDEB6D00D70C5C /* Chord in Frameworks */,
+				AEE13D4326BDE66600046E38 /* Datable in Frameworks */,
+				AEE13D4626BDE69700046E38 /* Gardener in Frameworks */,
+				AE972D8026EA93E000FB99E2 /* Transport in Frameworks */,
+				AE9C31C826BDEBE400D70C5C /* AdversaryLabClientCore in Frameworks */,
+				AE9C31CE26BDEC5600D70C5C /* Transmission in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE758ED026BDD4340049CE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE758EDB26BDD4340049CE4B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AE758EB826BDD4320049CE4B = {
+			isa = PBXGroup;
+			children = (
+				AECC0ABC26D5879C00562F26 /* CMakeLists.txt */,
+				AE758EC326BDD4320049CE4B /* CanaryDesktop */,
+				AE758ED626BDD4340049CE4B /* CanaryDesktopTests */,
+				AE758EE126BDD4340049CE4B /* CanaryDesktopUITests */,
+				AE758EC226BDD4320049CE4B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AE758EC226BDD4320049CE4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE758EC126BDD4320049CE4B /* CanaryDesktop.app */,
+				AE758ED326BDD4340049CE4B /* CanaryDesktopTests.xctest */,
+				AE758EDE26BDD4340049CE4B /* CanaryDesktopUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AE758EC326BDD4320049CE4B /* CanaryDesktop */ = {
+			isa = PBXGroup;
+			children = (
+				AE7B59CC26BDF26800658107 /* Util */,
+				AE7B59C126BDF25D00658107 /* KillAll.swift */,
+				AE7B59C626BDF25D00658107 /* CanaryTest.swift */,
+				AE7B59C226BDF25D00658107 /* Models */,
+				AE7B59B226BDF24500658107 /* Controllers */,
+				AE758EC426BDD4320049CE4B /* CanaryDesktopApp.swift */,
+				AE758EC626BDD4320049CE4B /* ContentView.swift */,
+				AE758EC826BDD4330049CE4B /* Assets.xcassets */,
+				AE758ECD26BDD4330049CE4B /* Info.plist */,
+				AE758ECE26BDD4330049CE4B /* CanaryDesktop.entitlements */,
+				AE758ECA26BDD4330049CE4B /* Preview Content */,
+			);
+			path = CanaryDesktop;
+			sourceTree = "<group>";
+		};
+		AE758ECA26BDD4330049CE4B /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AE758ECB26BDD4330049CE4B /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AE758ED626BDD4340049CE4B /* CanaryDesktopTests */ = {
+			isa = PBXGroup;
+			children = (
+				AE758ED726BDD4340049CE4B /* CanaryDesktopTests.swift */,
+				AE758ED926BDD4340049CE4B /* Info.plist */,
+			);
+			path = CanaryDesktopTests;
+			sourceTree = "<group>";
+		};
+		AE758EE126BDD4340049CE4B /* CanaryDesktopUITests */ = {
+			isa = PBXGroup;
+			children = (
+				AE758EE226BDD4340049CE4B /* CanaryDesktopUITests.swift */,
+				AE758EE426BDD4340049CE4B /* Info.plist */,
+			);
+			path = CanaryDesktopUITests;
+			sourceTree = "<group>";
+		};
+		AE7B59B226BDF24500658107 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AE7B59B326BDF24500658107 /* TestController.swift */,
+				AE7B59B426BDF24500658107 /* ConnectionTest.swift */,
+				AE7B59B526BDF24500658107 /* TransportController.swift */,
+				AE7B59B626BDF24500658107 /* AdversaryLabController.swift */,
+				AE7B59B726BDF24500658107 /* ShapeshifterController.swift */,
+				AE7B59B826BDF24500658107 /* ResultsController.swift */,
+				AE7B59B926BDF24500658107 /* TransportConnectionTest.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		AE7B59C226BDF25D00658107 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AE7B59C326BDF25D00658107 /* Transport.swift */,
+				AE7B59C426BDF25D00658107 /* TestResult.swift */,
+				AE7B59C526BDF25D00658107 /* WebTest.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AE7B59CC26BDF26800658107 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				AE7B59CD26BDF26800658107 /* Constants.swift */,
+				AECC0ABE26D99A4100562F26 /* Globals.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AE758EC026BDD4320049CE4B /* CanaryDesktop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE758EE726BDD4340049CE4B /* Build configuration list for PBXNativeTarget "CanaryDesktop" */;
+			buildPhases = (
+				AE758EBD26BDD4320049CE4B /* Sources */,
+				AE758EBE26BDD4320049CE4B /* Frameworks */,
+				AE758EBF26BDD4320049CE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CanaryDesktop;
+			packageProductDependencies = (
+				AE758F0326BDDDB00049CE4B /* ArgumentParser */,
+				AE758F0626BDDDC10049CE4B /* Logging */,
+				AE758F0F26BDDDF00049CE4B /* ZIPFoundation */,
+				AEE13D4226BDE66600046E38 /* Datable */,
+				AEE13D4526BDE69700046E38 /* Gardener */,
+				AE9C31C426BDEB6D00D70C5C /* Chord */,
+				AE9C31C726BDEBE400D70C5C /* AdversaryLabClientCore */,
+				AE9C31CA26BDEC3200D70C5C /* NetUtils */,
+				AE9C31CD26BDEC5600D70C5C /* Transmission */,
+				AE9C31D026BDEE2100D70C5C /* SwiftQueue */,
+				AE9C31D326BDF01100D70C5C /* ShadowSwift */,
+				AE972D7C26EA936A00FB99E2 /* ReplicantSwiftClient */,
+				AE972D7F26EA93E000FB99E2 /* Transport */,
+			);
+			productName = CanaryDesktop;
+			productReference = AE758EC126BDD4320049CE4B /* CanaryDesktop.app */;
+			productType = "com.apple.product-type.application";
+		};
+		AE758ED226BDD4340049CE4B /* CanaryDesktopTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE758EEA26BDD4340049CE4B /* Build configuration list for PBXNativeTarget "CanaryDesktopTests" */;
+			buildPhases = (
+				AE758ECF26BDD4340049CE4B /* Sources */,
+				AE758ED026BDD4340049CE4B /* Frameworks */,
+				AE758ED126BDD4340049CE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE758ED526BDD4340049CE4B /* PBXTargetDependency */,
+			);
+			name = CanaryDesktopTests;
+			productName = CanaryDesktopTests;
+			productReference = AE758ED326BDD4340049CE4B /* CanaryDesktopTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		AE758EDD26BDD4340049CE4B /* CanaryDesktopUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AE758EED26BDD4340049CE4B /* Build configuration list for PBXNativeTarget "CanaryDesktopUITests" */;
+			buildPhases = (
+				AE758EDA26BDD4340049CE4B /* Sources */,
+				AE758EDB26BDD4340049CE4B /* Frameworks */,
+				AE758EDC26BDD4340049CE4B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AE758EE026BDD4340049CE4B /* PBXTargetDependency */,
+			);
+			name = CanaryDesktopUITests;
+			productName = CanaryDesktopUITests;
+			productReference = AE758EDE26BDD4340049CE4B /* CanaryDesktopUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AE758EB926BDD4320049CE4B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1250;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					AE758EC026BDD4320049CE4B = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					AE758ED226BDD4340049CE4B = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = AE758EC026BDD4320049CE4B;
+					};
+					AE758EDD26BDD4340049CE4B = {
+						CreatedOnToolsVersion = 12.5.1;
+						TestTargetID = AE758EC026BDD4320049CE4B;
+					};
+				};
+			};
+			buildConfigurationList = AE758EBC26BDD4320049CE4B /* Build configuration list for PBXProject "CanaryDesktop" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AE758EB826BDD4320049CE4B;
+			packageReferences = (
+				AE758F0226BDDDB00049CE4B /* XCRemoteSwiftPackageReference "swift-argument-parser" */,
+				AE758F0526BDDDC10049CE4B /* XCRemoteSwiftPackageReference "swift-log" */,
+				AE758F0E26BDDDF00049CE4B /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
+				AEE13D4126BDE66600046E38 /* XCRemoteSwiftPackageReference "Datable" */,
+				AEE13D4426BDE69700046E38 /* XCRemoteSwiftPackageReference "Gardener" */,
+				AE9C31C326BDEB6D00D70C5C /* XCRemoteSwiftPackageReference "Chord" */,
+				AE9C31C626BDEBE400D70C5C /* XCRemoteSwiftPackageReference "AdversaryLabClientSwift" */,
+				AE9C31C926BDEC3200D70C5C /* XCRemoteSwiftPackageReference "swift-netutils" */,
+				AE9C31CC26BDEC5600D70C5C /* XCRemoteSwiftPackageReference "Transmission" */,
+				AE9C31CF26BDEE2100D70C5C /* XCRemoteSwiftPackageReference "SwiftQueue" */,
+				AE9C31D226BDF01100D70C5C /* XCRemoteSwiftPackageReference "ShadowSwift" */,
+				AE972D7B26EA936A00FB99E2 /* XCRemoteSwiftPackageReference "ReplicantSwiftClient" */,
+				AE972D7E26EA93E000FB99E2 /* XCRemoteSwiftPackageReference "Transport" */,
+			);
+			productRefGroup = AE758EC226BDD4320049CE4B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AE758EC026BDD4320049CE4B /* CanaryDesktop */,
+				AE758ED226BDD4340049CE4B /* CanaryDesktopTests */,
+				AE758EDD26BDD4340049CE4B /* CanaryDesktopUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AE758EBF26BDD4320049CE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AECC0ABD26D5879C00562F26 /* CMakeLists.txt in Resources */,
+				AE758ECC26BDD4330049CE4B /* Preview Assets.xcassets in Resources */,
+				AE758EC926BDD4330049CE4B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE758ED126BDD4340049CE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE758EDC26BDD4340049CE4B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AE758EBD26BDD4320049CE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE7B59BF26BDF24500658107 /* ResultsController.swift in Sources */,
+				AE7B59BA26BDF24500658107 /* TestController.swift in Sources */,
+				AE7B59C026BDF24500658107 /* TransportConnectionTest.swift in Sources */,
+				AE7B59BC26BDF24500658107 /* TransportController.swift in Sources */,
+				AE7B59C826BDF25D00658107 /* Transport.swift in Sources */,
+				AE7B59CE26BDF26800658107 /* Constants.swift in Sources */,
+				AE758EC726BDD4320049CE4B /* ContentView.swift in Sources */,
+				AE7B59CA26BDF25D00658107 /* WebTest.swift in Sources */,
+				AE7B59C926BDF25D00658107 /* TestResult.swift in Sources */,
+				AE7B59CB26BDF25D00658107 /* CanaryTest.swift in Sources */,
+				AE7B59C726BDF25D00658107 /* KillAll.swift in Sources */,
+				AE7B59BD26BDF24500658107 /* AdversaryLabController.swift in Sources */,
+				AECC0ABF26D99A4100562F26 /* Globals.swift in Sources */,
+				AE7B59BE26BDF24500658107 /* ShapeshifterController.swift in Sources */,
+				AE758EC526BDD4320049CE4B /* CanaryDesktopApp.swift in Sources */,
+				AE7B59BB26BDF24500658107 /* ConnectionTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE758ECF26BDD4340049CE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE758ED826BDD4340049CE4B /* CanaryDesktopTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AE758EDA26BDD4340049CE4B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE758EE326BDD4340049CE4B /* CanaryDesktopUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AE758ED526BDD4340049CE4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE758EC026BDD4320049CE4B /* CanaryDesktop */;
+			targetProxy = AE758ED426BDD4340049CE4B /* PBXContainerItemProxy */;
+		};
+		AE758EE026BDD4340049CE4B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AE758EC026BDD4320049CE4B /* CanaryDesktop */;
+			targetProxy = AE758EDF26BDD4340049CE4B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AE758EE526BDD4340049CE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AE758EE626BDD4340049CE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		AE758EE826BDD4340049CE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CanaryDesktop/CanaryDesktop.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"CanaryDesktop/Preview Content\"";
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CanaryDesktop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.CanaryDesktop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Canary Desktop Provisioning Profile";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AE758EE926BDD4340049CE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CanaryDesktop/CanaryDesktop.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
+				CODE_SIGN_STYLE = Manual;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"CanaryDesktop/Preview Content\"";
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = CanaryDesktop/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.CanaryDesktop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Canary Desktop Provisioning Profile";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		AE758EEB26BDD4340049CE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = CanaryDesktopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.CanaryDesktopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CanaryDesktop.app/Contents/MacOS/CanaryDesktop";
+			};
+			name = Debug;
+		};
+		AE758EEC26BDD4340049CE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = CanaryDesktopTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.CanaryDesktopTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CanaryDesktop.app/Contents/MacOS/CanaryDesktop";
+			};
+			name = Release;
+		};
+		AE758EEE26BDD4340049CE4B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = CanaryDesktopUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.CanaryDesktopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CanaryDesktop;
+			};
+			name = Debug;
+		};
+		AE758EEF26BDD4340049CE4B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 67Y4NSLDQ3;
+				INFOPLIST_FILE = CanaryDesktopUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.OperatorFoundation.CanaryDesktopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = CanaryDesktop;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AE758EBC26BDD4320049CE4B /* Build configuration list for PBXProject "CanaryDesktop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE758EE526BDD4340049CE4B /* Debug */,
+				AE758EE626BDD4340049CE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE758EE726BDD4340049CE4B /* Build configuration list for PBXNativeTarget "CanaryDesktop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE758EE826BDD4340049CE4B /* Debug */,
+				AE758EE926BDD4340049CE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE758EEA26BDD4340049CE4B /* Build configuration list for PBXNativeTarget "CanaryDesktopTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE758EEB26BDD4340049CE4B /* Debug */,
+				AE758EEC26BDD4340049CE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AE758EED26BDD4340049CE4B /* Build configuration list for PBXNativeTarget "CanaryDesktopUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AE758EEE26BDD4340049CE4B /* Debug */,
+				AE758EEF26BDD4340049CE4B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AE758F0226BDDDB00049CE4B /* XCRemoteSwiftPackageReference "swift-argument-parser" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-argument-parser.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.4;
+			};
+		};
+		AE758F0526BDDDC10049CE4B /* XCRemoteSwiftPackageReference "swift-log" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-log.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.4.2;
+			};
+		};
+		AE758F0E26BDDDF00049CE4B /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.12;
+			};
+		};
+		AE972D7B26EA936A00FB99E2 /* XCRemoteSwiftPackageReference "ReplicantSwiftClient" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/ReplicantSwiftClient.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.1;
+			};
+		};
+		AE972D7E26EA93E000FB99E2 /* XCRemoteSwiftPackageReference "Transport" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/Transport.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.5;
+			};
+		};
+		AE9C31C326BDEB6D00D70C5C /* XCRemoteSwiftPackageReference "Chord" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/Chord.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.12;
+			};
+		};
+		AE9C31C626BDEBE400D70C5C /* XCRemoteSwiftPackageReference "AdversaryLabClientSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/AdversaryLabClientSwift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.5;
+			};
+		};
+		AE9C31C926BDEC3200D70C5C /* XCRemoteSwiftPackageReference "swift-netutils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/swift-netutils.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.0;
+			};
+		};
+		AE9C31CC26BDEC5600D70C5C /* XCRemoteSwiftPackageReference "Transmission" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/Transmission.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.3;
+			};
+		};
+		AE9C31CF26BDEE2100D70C5C /* XCRemoteSwiftPackageReference "SwiftQueue" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/SwiftQueue.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+		AE9C31D226BDF01100D70C5C /* XCRemoteSwiftPackageReference "ShadowSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/ShadowSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		AEE13D4126BDE66600046E38 /* XCRemoteSwiftPackageReference "Datable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/Datable";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.5;
+			};
+		};
+		AEE13D4426BDE69700046E38 /* XCRemoteSwiftPackageReference "Gardener" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OperatorFoundation/Gardener.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.45;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AE758F0326BDDDB00049CE4B /* ArgumentParser */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE758F0226BDDDB00049CE4B /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
+			productName = ArgumentParser;
+		};
+		AE758F0626BDDDC10049CE4B /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE758F0526BDDDC10049CE4B /* XCRemoteSwiftPackageReference "swift-log" */;
+			productName = Logging;
+		};
+		AE758F0F26BDDDF00049CE4B /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE758F0E26BDDDF00049CE4B /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
+		};
+		AE972D7C26EA936A00FB99E2 /* ReplicantSwiftClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE972D7B26EA936A00FB99E2 /* XCRemoteSwiftPackageReference "ReplicantSwiftClient" */;
+			productName = ReplicantSwiftClient;
+		};
+		AE972D7F26EA93E000FB99E2 /* Transport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE972D7E26EA93E000FB99E2 /* XCRemoteSwiftPackageReference "Transport" */;
+			productName = Transport;
+		};
+		AE9C31C426BDEB6D00D70C5C /* Chord */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9C31C326BDEB6D00D70C5C /* XCRemoteSwiftPackageReference "Chord" */;
+			productName = Chord;
+		};
+		AE9C31C726BDEBE400D70C5C /* AdversaryLabClientCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9C31C626BDEBE400D70C5C /* XCRemoteSwiftPackageReference "AdversaryLabClientSwift" */;
+			productName = AdversaryLabClientCore;
+		};
+		AE9C31CA26BDEC3200D70C5C /* NetUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9C31C926BDEC3200D70C5C /* XCRemoteSwiftPackageReference "swift-netutils" */;
+			productName = NetUtils;
+		};
+		AE9C31CD26BDEC5600D70C5C /* Transmission */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9C31CC26BDEC5600D70C5C /* XCRemoteSwiftPackageReference "Transmission" */;
+			productName = Transmission;
+		};
+		AE9C31D026BDEE2100D70C5C /* SwiftQueue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9C31CF26BDEE2100D70C5C /* XCRemoteSwiftPackageReference "SwiftQueue" */;
+			productName = SwiftQueue;
+		};
+		AE9C31D326BDF01100D70C5C /* ShadowSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AE9C31D226BDF01100D70C5C /* XCRemoteSwiftPackageReference "ShadowSwift" */;
+			productName = ShadowSwift;
+		};
+		AEE13D4226BDE66600046E38 /* Datable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEE13D4126BDE66600046E38 /* XCRemoteSwiftPackageReference "Datable" */;
+			productName = Datable;
+		};
+		AEE13D4526BDE69700046E38 /* Gardener */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEE13D4426BDE69700046E38 /* XCRemoteSwiftPackageReference "Gardener" */;
+			productName = Gardener;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = AE758EB926BDD4320049CE4B /* Project object */;
+}
