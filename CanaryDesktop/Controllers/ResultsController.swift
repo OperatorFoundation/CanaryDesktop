@@ -30,9 +30,7 @@ import ZIPFoundation
 
 func zipResults()
 {
-    let currentWorkingPath = FileManager.default.currentDirectoryPath
-    var sourceURL = URL(fileURLWithPath: currentWorkingPath)
-    sourceURL.appendPathComponent("adversary_data")
+    let sourceURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent("adversary_data")
     
     guard FileManager.default.fileExists(atPath: sourceURL.path)
     else
@@ -44,8 +42,7 @@ func zipResults()
     let formatter = DateFormatter()
     formatter.dateFormat = "yyyy_MM_dd_HH_mm_ss"
     let zipName = "adversary_data_\(formatter.string(from: Date())).zip"
-    var destinationURL = URL(fileURLWithPath: currentWorkingPath)
-    destinationURL.appendPathComponent(zipName)
+    let destinationURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(zipName)
     do {
         try FileManager.default.zipItem(at: sourceURL, to: destinationURL)
         globalRunningLog.logString += "\n🍩🍩 Saved zip: \(destinationURL)\n"

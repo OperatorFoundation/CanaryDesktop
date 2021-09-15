@@ -141,17 +141,24 @@ class TestController
         guard let resultData = resultString.data(using: .utf8)
             else { return false }
         
-        let currentDirectoryPath = FileManager.default.currentDirectoryPath
-        let outputDirectoryPath = "\(currentDirectoryPath)/\(outputDirectoryName)"
-        let resultFilePath = "/\(outputDirectoryPath)/\(resultsFileName)\(getNowAsString()).\(resultsExtension)"
+        guard let resultURL = getDocumentURL()
+        else
+        {
+            print("Unable to save result data.")
+            return false
+        }
         
-        if FileManager.default.fileExists(atPath: resultFilePath)
+        
+        
+        
+        
+        if FileManager.default.fileExists(atPath: resultURL.path)
         {
             // We already have a file at this address let's add out results to the end of it.
-            guard let fileHandler = FileHandle(forWritingAtPath: resultFilePath)
+            guard let fileHandler = FileHandle(forWritingAtPath: resultURL.path)
                 else
             {
-                globalRunningLog.logString += "\n🛑  Error creating a file handler to write to \(resultFilePath)\n"
+                globalRunningLog.logString += "\n🛑  Error creating a file handler to write to \(resultURL.path)\n"
                 return false
             }
             
@@ -159,7 +166,7 @@ class TestController
             fileHandler.write(resultData)
             fileHandler.closeFile()
             
-            globalRunningLog.logString += "\nSaved test results to file: \(resultFilePath)"
+            globalRunningLog.logString += "\nSaved test results to file: \(resultURL.path)"
             return true
         }
         else
@@ -173,24 +180,9 @@ class TestController
             // Append our results to the label row
             let newFileData = labelData + resultData
             
-            // Make sure our output directory exists
-            if !FileManager.default.fileExists(atPath: outputDirectoryPath)
-            {
-                do
-                {
-                    try FileManager.default.createDirectory(at: URL(fileURLWithPath: outputDirectoryPath, isDirectory: true), withIntermediateDirectories: true, attributes: nil)
-                }
-                catch
-                {
-                    globalRunningLog.logString += "\n🛑  Error creating output directory at \(outputDirectoryPath): \(error)\n"
-                    return false
-                }
-            }
-            
             // Save the new file
-            let saved = FileManager.default.createFile(atPath: resultFilePath, contents: newFileData, attributes: nil)
+            let saved = FileManager.default.createFile(atPath: resultURL.path, contents: newFileData, attributes: nil)
             print("Test results saved? \(saved.description)")
-            //print("File path: \(resultFilePath)")
             
             return saved
         }
@@ -245,6 +237,32 @@ class TestController
         dateString = dateString.replacingOccurrences(of: ":", with: "_")
         
         return dateString
+    }
+    
+    func getDocumentURL() -> URL?
+    {
+        do
+        {
+            //  Find Application Support directory
+            let fileManager = FileManager.default
+            let appSupportURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+            //  Create subdirectory
+            let directoryURL = appSupportURL.appendingPathComponent("CanaryDesktop")
+            
+            if (!FileManager.default.fileExists(atPath: directoryURL.path))
+            {
+                try fileManager.createDirectory (at: directoryURL, withIntermediateDirectories: true, attributes: nil)
+            }
+            
+            let documentURL = directoryURL.appendingPathComponent ("\(resultsFileName)\(getNowAsString()).\(resultsExtension)")
+            return documentURL
+        
+        }
+        catch
+        {
+            print("An error occured while trying to create a document URL.")
+            return nil
+        }
     }
     
 }
