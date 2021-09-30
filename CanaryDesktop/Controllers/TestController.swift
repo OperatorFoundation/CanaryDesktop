@@ -49,7 +49,7 @@ class TestController
         guard let connection = Synchronizer.sync(transportController.startTransport)
         else { return nil }
         
-        globalRunningLog.logString += "\n🧩 Launched \(transport). 🧩"
+        globalRunningLog.updateLog("\n🧩 Launched \(transport). 🧩")
                 
         ///Connection Test
         let connectionTest = TransportConnectionTest(transportConnection: connection, canaryString: canaryString)
@@ -61,7 +61,7 @@ class TestController
         let _ = save(result: result!, testName: transport.name)
         
 //        ///Cleanup
-//        globalRunningLog.logString += "\n🛁  🛁  🛁  🛁  Cleaning up after test! 🛁  🛁  🛁  🛁"
+//        globalRunningLog.updateLog("\n🛁  🛁  🛁  🛁  Cleaning up after test! 🛁  🛁  🛁  🛁"
 //        ShapeshifterController.sharedInstance.stopShapeshifterClient()
         
         sleep(2)
@@ -82,11 +82,11 @@ class TestController
 //        guard ShapeshifterController.sharedInstance.launchShapeshifterClient(serverIP: serverIP, transport: transport) == true
 //        else
 //        {
-//            globalRunningLog.logString += "\n❗️ Failed to launch Shapeshifter Client for \(transport) with serverIP: \(serverIP)"
+//            globalRunningLog.updateLog("\n❗️ Failed to launch Shapeshifter Client for \(transport) with serverIP: \(serverIP)"
 //            return nil
 //        }
         
-        globalRunningLog.logString += "\n🧩 Launched shapeshifter-dispatcher for \(transport). 🧩"
+        globalRunningLog.updateLog("\n🧩 Launched shapeshifter-dispatcher for \(transport). 🧩")
                 
         ///Connection Test
         let testWebAddress = "http://127.0.0.1:1234/"
@@ -100,7 +100,7 @@ class TestController
         let _ = save(result: result!, testName: transport.name)
         
 //        ///Cleanup
-//        globalRunningLog.logString += "🛁  🛁  🛁  🛁  Cleaning up after test! 🛁  🛁  🛁  🛁\n"
+//        globalRunningLog.updateLog("🛁  🛁  🛁  🛁  Cleaning up after test! 🛁  🛁  🛁  🛁\n"
 //        ShapeshifterController.sharedInstance.stopShapeshifterClient()
         
         sleep(2)
@@ -122,7 +122,7 @@ class TestController
         let _ = save(result: result!, testName: webAddress)
         
 //        ///Cleanup
-//        globalRunningLog.logString += "🛁  🛁  🛁  🛁  Cleaning up after web test! 🛁  🛁  🛁  🛁\n"
+//        globalRunningLog.updateLog("🛁  🛁  🛁  🛁  Cleaning up after web test! 🛁  🛁  🛁  🛁\n"
 //        ShapeshifterController.sharedInstance.stopShapeshifterClient()
         
         sleep(2)
@@ -158,7 +158,7 @@ class TestController
             guard let fileHandler = FileHandle(forWritingAtPath: resultURL.path)
                 else
             {
-                globalRunningLog.logString += "\n🛑  Error creating a file handler to write to \(resultURL.path)\n"
+                globalRunningLog.updateLog("\n🛑  Error creating a file handler to write to \(resultURL.path)\n")
                 return false
             }
             
@@ -166,7 +166,7 @@ class TestController
             fileHandler.write(resultData)
             fileHandler.closeFile()
             
-            globalRunningLog.logString += "\nSaved test results to file: \(resultURL.path)"
+            globalRunningLog.updateLog("\nSaved test results to file: \(resultURL.path)")
             return true
         }
         else
@@ -201,7 +201,7 @@ class TestController
             }
             else
             {
-                globalRunningLog.logString += "\n🛑  Received a nil result when testing \(name) transport.\n"
+                globalRunningLog.updateLog("\n🛑  Received a nil result when testing \(name) transport.\n")
                 sleep(5)
                 AdversaryLabController.sharedInstance.stopAdversaryLab(testResult: nil)
             }
@@ -217,7 +217,7 @@ class TestController
             }
             else
             {
-                globalRunningLog.logString += "\n🛑  Received a nil result when testing \(name) web address."
+                globalRunningLog.updateLog("\n🛑  Received a nil result when testing \(name) web address.")
                 sleep(5)
                 AdversaryLabController.sharedInstance.stopAdversaryLab(testResult: nil)
                 //dispatchGroup.leave()

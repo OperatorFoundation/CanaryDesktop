@@ -81,7 +81,7 @@ class TransportController
         guard let shadowConfig = ShadowConfig(path: configPath)
         else
         {
-            globalRunningLog.logString += "\n Unable to parse the ShadowSocks config at \(configPath)"
+            globalRunningLog.updateLog("\n Unable to parse the ShadowSocks config at \(configPath)")
             print("\n Unable to parse the ShadowSocks config at \(configPath)")
             return
         }

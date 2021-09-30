@@ -44,7 +44,7 @@ class ConnectionTest
     
     func run() -> Bool
     {
-        globalRunningLog.logString += "\n📣 Running connection test."
+        globalRunningLog.updateLog("\n📣 Running connection test.")
         
         if let url = URL(string: testWebAddress)
         {
@@ -76,7 +76,7 @@ class ConnectionTest
                 testTask.resume()
                 dispatchGroup.wait()
             })
-            
+
             queue.addOperations([op], waitUntilFinished: true)
             
             guard let response = taskResponse
@@ -93,7 +93,7 @@ class ConnectionTest
                     return false
             }
             
-            globalRunningLog.logString += "\n💕 received status code 200 💕"
+            globalRunningLog.updateLog("\n💕 received status code 200 💕")
             
             //Control Data
             if canaryString != nil
@@ -104,16 +104,16 @@ class ConnectionTest
                 {
                     if observedData == controlData
                     {
-                        globalRunningLog.logString += "\n💕 🐥 It works! 🐥 💕"
+                        globalRunningLog.updateLog("\n💕 🐥 It works! 🐥 💕")
                         return true
                     }
                     else
                     {
-                        globalRunningLog.logString += "\n🖤  We connected but the data did not match. 🖤\n"
+                        globalRunningLog.updateLog("\n🖤  We connected but the data did not match. 🖤\n")
                         
                         if let observedString = String(data: observedData, encoding: String.Encoding.ascii)
                         {
-                            globalRunningLog.logString += "Here's what we got back instead: \(observedString)\n"
+                            globalRunningLog.updateLog("Here's what we got back instead: \(observedString)\n")
                         }
                         
                         return false

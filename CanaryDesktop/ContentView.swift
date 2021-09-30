@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Network
+import ArgumentParser
 
 
 
@@ -24,99 +25,127 @@ struct ContentView: View
         
     var body: some View
     {
-        VStack
+        VStack()
         {
-            Spacer()
-            
-            // Server IP
-            TextField("Enter the transport server IP", text: $serverIP)
+            Section(header:Text("Transport Server").bold()) // Server IP
             {
-                (isEditing) in
-                
-                self.isEditing = isEditing
-            }
-            .onChange(of: serverIP)
-            {
-                value in
-                
-                isValidIP = validate(serverIP: serverIP)
-                
-                if (isValidIP)
+                TextField("Enter the transport server IP", text: $serverIP)
                 {
-                    UserDefaults.standard.set(self.serverIP, forKey: serverIPKey)
-                }
-            }
-            .padding([.top, .leading, .trailing])
-            .disableAutocorrection(true)
-            .multilineTextAlignment(.center)
-            
-            Text(serverIP)
-                .foregroundColor(!isValidIP ? .red : .blue)
-            
-            Text(configPath)
-                .foregroundColor(isValidIP ? .blue: .red)
-                .padding(.top)
-            
-            
-            Button("Browse")
-              {
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = true
-                if panel.runModal() == .OK
-                {
-                    isValidConfigPath = validate(configURL: panel.url)
+                    (isEditing) in
                     
-                    if isValidConfigPath
+                    self.isEditing = isEditing
+                }
+                .onChange(of: serverIP)
+                {
+                    value in
+                    
+                    isValidIP = validate(serverIP: serverIP)
+                    
+                    if (isValidIP)
                     {
-                        configPath = panel.url!.path
-                        UserDefaults.standard.set(self.configPath, forKey: configPathKey)
+                        UserDefaults.standard.set(self.serverIP, forKey: serverIPKey)
+                    }
+                }
+                .padding([.top, .leading, .trailing])
+                .disableAutocorrection(true)
+                .multilineTextAlignment(.center)
+                
+                Text(serverIP)
+                    .foregroundColor(!isValidIP ? .red : .blue)
+            }
+            Divider()
+            Section(header: Text("Transport Config Files").bold()) // Configs Folder
+            {
+                Text(configPath)
+                    .foregroundColor(isValidIP ? .blue: .red)
+                    .padding(.top)
+                
+                
+                Button("Browse")
+                {
+                    let panel = NSOpenPanel()
+                    panel.allowsMultipleSelection = false
+                    panel.canChooseDirectories = true
+                    if panel.runModal() == .OK
+                    {
+                        isValidConfigPath = validate(configURL: panel.url)
+                        
+                        if isValidConfigPath
+                        {
+                            configPath = panel.url!.path
+                            UserDefaults.standard.set(self.configPath, forKey: configPathKey)
+                        }
+                        else
+                        {
+                            configPath = "Invalid Directory Path"
+                        }
+                    }
+                }
+                .disabled(globalRunningLog.testsAreRunning)
+            }
+            Divider()
+            Section() // Number of runs
+            {
+                Text("How many times do you want to run the test?")
+                    .fontWeight(.regular)
+                    .padding(.top)
+                
+                Stepper("\(testCount) time(s)")
+                {
+                    if testCount < 10
+                    {
+                        testCount += 1
+                    }
+                }
+                onDecrement:
+                {
+                    if testCount > 0
+                    {
+                        testCount -= 1
+                    }
+                }
+                .padding(.leading)
+            }
+            Section() // Start Test(s)
+            {
+                Button("Run Test")
+                {
+                    if (isValidIP && isValidConfigPath)
+                    {
+                        runningLog.logString += "\nRunning Canary tests. This may take a few moments.\n"
+                        var test = CanaryTest(serverIP: serverIP, testCount: testCount)
+                        test.resourceDirPath = configPath
+                        test.runTest()
                     }
                     else
                     {
-                        configPath = "Invalid Directory Path"
+                        runningLog.logString += "\nFailed to run the requested tests, please check that you entered a valid IP address, and that the config directory you selected has the correct transport config files.\n"
                     }
                 }
-            }
-            .disabled(globalRunningLog.testsAreRunning)
-            
-            // Test Count
-            Text("How many times do you want to run the test?")
-                .fontWeight(.regular)
+                .disabled(globalRunningLog.testsAreRunning)
                 .padding(.top)
-            Stepper("\(testCount) time(s)")
-            {
-                if testCount < 10
-                {
-                    testCount += 1
-                }
             }
-            onDecrement:
+            Divider()
+            Section(header: Text("Run Log").bold()) // Log
             {
-                if testCount > 0
-                {
-                    testCount -= 1
-                }
+                
             }
+        }
+        ScrollViewReader // Test Log with automatic scrolling
+        {
+            sp in
             
-            Button("Run Test")
+            ScrollView
             {
-                if (isValidIP && isValidConfigPath)
+                Text(runningLog.logString)
+                    .id(0)
+                    .onChange(of: runningLog.logString)
                 {
-                    runningLog.logString += "\nRunning Canary tests. This may take a few moments.\n"
-                    var test = CanaryTest(serverIP: serverIP, testCount: testCount)
-                    test.resourceDirPath = configPath
-                    test.runTest()
-                }
-                else
-                {
-                    runningLog.logString += "\nFailed to run the requested tests, please check that you entered a valid IP address, and that the config directory you selected has the correct transport config files.\n"
+                    Value in
+                    sp.scrollTo(0, anchor: .bottom)
                 }
             }
-            .disabled(globalRunningLog.testsAreRunning)
-            .padding(.top)
-            
-            TextEditor(text: $runningLog.logString)
+            .frame(maxHeight: 150)
         }
         .onAppear()
         {
@@ -124,6 +153,7 @@ struct ContentView: View
             isValidIP = validate(serverIP: serverIP)
             isValidConfigPath = validate(configURL: URL(string: configPath))
         }
+        .padding(.vertical)
     }
     
     func validate(serverIP: String) -> Bool

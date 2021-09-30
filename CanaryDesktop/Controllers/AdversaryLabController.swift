@@ -45,20 +45,27 @@ class AdversaryLabController
     {
         adversaryLabClient = AdversaryLabClientCore.AdversaryLabClient(transport: transportName, port: UInt16(string: port), allowBlock: nil)
         
-        globalRunningLog.logString += "\n🔬  Launching Adversary Lab."
-        adversaryLabClient?.startRecording(interface)
+        globalRunningLog.updateLog("\n🔬  Launching Adversary Lab.")
+        
+        let recording = adversaryLabClient?.startRecording(interface)
+        
+        if (recording == nil || !recording!)
+        {
+            globalRunningLog.updateLog("\n🔬  Failed to launch Adversary Lab: traffic data will not be recorded.")
+        }
+        
     }
     
     func stopAdversaryLab(testResult: TestResult?)
     {
         if let result = testResult
         {
-            globalRunningLog.logString += "\n🔬  Stopping Adversary Lab.\n"
+            globalRunningLog.updateLog("\n🔬  Stopping Adversary Lab.\n")
             
             guard adversaryLabClient != nil
             else
             {
-                globalRunningLog.logString += "🔬  Attempted to stop adversary lab when it is not running.\n"
+                globalRunningLog.updateLog("🔬  Attempted to stop adversary lab when it is not running.\n")
                 return
             }
             

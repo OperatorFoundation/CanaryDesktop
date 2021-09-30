@@ -41,7 +41,7 @@ class TransportConnectionTest
             
             if let error = maybeError
             {
-                globalRunningLog.logString += "\nError reading data for transport connection: \(error)\n"
+                globalRunningLog.updateLog("\nError reading data for transport connection: \(error)\n")
                 completionHandler(self.readBuffer)
                 return
             }
@@ -56,7 +56,7 @@ class TransportConnectionTest
                     completionHandler(self.readBuffer)
                     return
                 }
-                
+                print("Read Buffer: \(self.readBuffer.string)")
                 self.read(completionHandler: completionHandler)
             }
             else
@@ -69,7 +69,7 @@ class TransportConnectionTest
     
     func run() -> Bool
     {
-        globalRunningLog.logString += "\n📣 Running transport connection test."
+        globalRunningLog.updateLog("\n📣 Running transport connection test.")
         
         let maybeError = Synchronizer.sync(self.send)
         if let error = maybeError
@@ -82,14 +82,14 @@ class TransportConnectionTest
         guard let responseData = response
             else
         {
-            globalRunningLog.logString += "🚫 We did not receive a response 🚫\n"
+            globalRunningLog.updateLog("🚫 We did not receive a response 🚫\n")
                 return false
         }
         
         guard let responseString = String(data: responseData, encoding: .utf8)
         else
         {
-            globalRunningLog.logString += "We could not convert the response data into a string \(responseData)\n"
+            globalRunningLog.updateLog("We could not convert the response data into a string \(responseData)\n")
             return false
         }
         
@@ -110,13 +110,13 @@ class TransportConnectionTest
         {
             if canaryString == payloadString
             {
-                globalRunningLog.logString += "\n💕 🐥 It works! 🐥 💕"
+                globalRunningLog.updateLog("\n💕 🐥 It works! 🐥 💕")
                 return true
             }
             else
             {
-                globalRunningLog.logString += "\n🖤  We connected but the data did not match. 🖤"
-                globalRunningLog.logString += "\nHere's what we got back instead of what we expected: \(payloadString)\n"
+                globalRunningLog.updateLog("\n🖤  We connected but the data did not match. 🖤")
+                globalRunningLog.updateLog("\nHere's what we got back instead of what we expected: \(payloadString)\n")
                 
                 return false
             }

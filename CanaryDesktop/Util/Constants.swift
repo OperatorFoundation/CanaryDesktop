@@ -40,7 +40,7 @@ let shsocksServerPort: UInt16 = 2345
 let meekServerPort = "443"
 let replicantServerPort = "2277"
 
-let allTransports = [shadowsocks, replicant]
+let allTransports = [replicant, shadowsocks]
 
 let httpRequestString = "GET / HTTP/1.0\r\nConnection: close\r\n\r\n"
 let canaryString = "Yeah!\n"

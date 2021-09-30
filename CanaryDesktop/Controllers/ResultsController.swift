@@ -45,9 +45,9 @@ func zipResults()
     let destinationURL = FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(zipName)
     do {
         try FileManager.default.zipItem(at: sourceURL, to: destinationURL)
-        globalRunningLog.logString += "\n🍩🍩 Saved zip: \(destinationURL)\n"
+        globalRunningLog.updateLog("\n🍩🍩 Saved zip: \(destinationURL)\n")
     } catch {
-        globalRunningLog.logString += "\n🚨 Creation of ZIP archive failed with error:\(error) 🚨\n"
+        globalRunningLog.updateLog("\n🚨 Creation of ZIP archive failed with error:\(error) 🚨\n")
         return
     }
 }

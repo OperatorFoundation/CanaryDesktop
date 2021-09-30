@@ -30,6 +30,8 @@ import Transmission
 
 struct CanaryTest//: ParsableCommand
 {
+    var canaryTestQueue = DispatchQueue(label: "CanaryTests")
+    
     //@Argument(help: "IP address for the transport server.")
     var serverIP: String
     
@@ -56,20 +58,20 @@ struct CanaryTest//: ParsableCommand
     ///  a csv file and song data (zipped) are saved with the test results.
     func runTest()
     {
-        globalRunningLog.logString += "\n Attmpting to run tests...\n"
-        globalRunningLog.testsAreRunning = true
+        globalRunningLog.updateLog("\n Attmpting to run tests...\n")
+        globalRunningLog.updateState(runningTests: true)
         
         if let rPath = resourceDirPath
         {
             resourcesDirectoryPath = rPath
-            globalRunningLog.logString += "\nUser selected resources directory: \(resourcesDirectoryPath)\n"
+            globalRunningLog.updateLog("\nUser selected resources directory: \(resourcesDirectoryPath)\n")
             print("\nUser selected resources directory: \(resourcesDirectoryPath)")
         }
         else
         {
             resourcesDirectoryPath = "\(FileManager.default.currentDirectoryPath)/Sources/Resources"
             
-            globalRunningLog.logString += "\nYou did not indicate a preferred resources directory, using the default directory: \(resourcesDirectoryPath)\n"
+            globalRunningLog.updateLog("\nYou did not indicate a preferred resources directory, using the default directory: \(resourcesDirectoryPath)\n")
             print("\nYou did not indicate a preferred resources directory, using the default directory: \(resourcesDirectoryPath)")
         }
         
@@ -93,33 +95,36 @@ struct CanaryTest//: ParsableCommand
             interfaceName = name
         }
         
-        globalRunningLog.logString += "Selected an interface for running test: \(interfaceName)\n"
+        globalRunningLog.updateLog("Selected an interface for running test: \(interfaceName)\n")
         
-        for i in 1...testCount
-        {
-            globalRunningLog.logString += "\n***************************\nRunning test batch \(i) of \(testCount)\n***************************\n"
-            print("\n***************************\nRunning test batch \(i) of \(testCount)\n***************************")
-            
-            for transport in allTransports
+        canaryTestQueue.async {
+            for i in 1...testCount
             {
-                globalRunningLog.logString += "\n 🧪 Starting test for \(transport.name) 🧪"
-                print("\n 🧪 Starting test for \(transport.name) 🧪\n")
-                TestController.sharedInstance.test(name: transport.name, serverIPString: serverIP, port: transport.port, interface: interfaceName, webAddress: nil)
+                globalRunningLog.updateLog("\n***************************\nRunning test batch \(i) of \(testCount)\n***************************\n")
+                print("\n***************************\nRunning test batch \(i) of \(testCount)\n***************************")
+                
+                for transport in allTransports
+                {
+                    globalRunningLog.updateLog("\n 🧪 Starting test for \(transport.name) 🧪")
+                    print("\n 🧪 Starting test for \(transport.name) 🧪\n")
+                    TestController.sharedInstance.test(name: transport.name, serverIPString: serverIP, port: transport.port, interface: interfaceName, webAddress: nil)
+                }
+                
+                for webTest in allWebTests
+                {
+                    globalRunningLog.updateLog("\n 🧪 Starting web test for \(webTest.website) 🧪")
+                    TestController.sharedInstance.test(name: webTest.name, serverIPString: serverIP, port: webTest.port, interface: interfaceName, webAddress: webTest.website)
+                }
+                
+                // This directory contains our test results.
+                zipResults()
             }
-            
-            for webTest in allWebTests
-            {
-                globalRunningLog.logString += "\n 🧪 Starting web test for \(webTest.website) 🧪"
-                TestController.sharedInstance.test(name: webTest.name, serverIPString: serverIP, port: webTest.port, interface: interfaceName, webAddress: webTest.website)
-            }
-            
-            // This directory contains our test results.
-            zipResults()
         }
         
+        
         //ShapeshifterController.sharedInstance.killAllShShifter()
-        globalRunningLog.logString += "\nCanary tests are complete.\n"
-        globalRunningLog.testsAreRunning = false
+        globalRunningLog.updateLog("\nCanary tests are complete.\n")
+        globalRunningLog.updateState(runningTests: false)
     }
     
     func guessUserInterface() -> String?
@@ -157,7 +162,7 @@ struct CanaryTest//: ParsableCommand
         guard FileManager.default.fileExists(atPath: resourcesDirectoryPath)
         else
         {
-            globalRunningLog.logString += "\nResource directory does not exist at \(resourcesDirectoryPath).\n"
+            globalRunningLog.updateLog("\nResource directory does not exist at \(resourcesDirectoryPath).\n")
             print("Resource directory does not exist at \(resourcesDirectoryPath).")
             return false
         }
@@ -172,19 +177,19 @@ struct CanaryTest//: ParsableCommand
                 guard FileManager.default.fileExists(atPath:"\(resourcesDirectoryPath)/\(shSocksFilePath)")
                 else
                 {
-                    globalRunningLog.logString += "Shadowsocks config not found at \(resourcesDirectoryPath)/\(shSocksFilePath)"
+                    globalRunningLog.updateLog("Shadowsocks config not found at \(resourcesDirectoryPath)/\(shSocksFilePath)")
                     return false
                 }
             case replicant:
                 guard FileManager.default.fileExists(atPath:"\(resourcesDirectoryPath)/\(replicantFilePath)")
                 else
                 {
-                    globalRunningLog.logString += "Replicant config not found at \(resourcesDirectoryPath)/\(replicantFilePath)"
+                    globalRunningLog.updateLog("Replicant config not found at \(resourcesDirectoryPath)/\(replicantFilePath)")
                     print("Replicant config not found at \(resourcesDirectoryPath)/\(replicantFilePath)")
                     return false
                 }
             default:
-                globalRunningLog.logString += "\nTried to test a transport that has no config file. Transport name: \(transport.name)\n"
+                globalRunningLog.updateLog("\nTried to test a transport that has no config file. Transport name: \(transport.name)\n")
                 print("Tried to test a transport that has no config file. Transport name: \(transport.name)")
                 return false
             }
@@ -196,7 +201,7 @@ struct CanaryTest//: ParsableCommand
             guard let _ = Transmission.Connection(host: serverIP, port: Int(string: allTransports[0].port), type: .tcp)
             else
             {
-                globalRunningLog.logString += "\nFailed to connect to the transport server.\n"
+                globalRunningLog.updateLog("\nFailed to connect to the transport server.\n")
                 return false
             }
         }
