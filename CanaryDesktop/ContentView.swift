@@ -9,11 +9,10 @@ import SwiftUI
 import Network
 import ArgumentParser
 
-
-
 struct ContentView: View
 {
-    @ObservedObject var runningLog = RunningLog()
+    
+    @ObservedObject var runningLog = globalRunningLog
     
     @State private var ipStringMessage = ""
     @State private var isEditing = false
@@ -149,7 +148,7 @@ struct ContentView: View
         }
         .onAppear()
         {
-            globalRunningLog = runningLog
+            
             isValidIP = validate(serverIP: serverIP)
             isValidConfigPath = validate(configURL: URL(string: configPath))
         }

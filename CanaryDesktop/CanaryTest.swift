@@ -58,20 +58,20 @@ struct CanaryTest//: ParsableCommand
     ///  a csv file and song data (zipped) are saved with the test results.
     func runTest()
     {
-        globalRunningLog.updateLog("\n Attmpting to run tests...\n")
+        uiLog.info("\n Attmpting to run tests...\n")
         globalRunningLog.updateState(runningTests: true)
         
         if let rPath = resourceDirPath
         {
             resourcesDirectoryPath = rPath
-            globalRunningLog.updateLog("\nUser selected resources directory: \(resourcesDirectoryPath)\n")
+            uiLog.info("\nUser selected resources directory: \(resourcesDirectoryPath)\n")
             print("\nUser selected resources directory: \(resourcesDirectoryPath)")
         }
         else
         {
             resourcesDirectoryPath = "\(FileManager.default.currentDirectoryPath)/Sources/Resources"
             
-            globalRunningLog.updateLog("\nYou did not indicate a preferred resources directory, using the default directory: \(resourcesDirectoryPath)\n")
+            uiLog.info("\nYou did not indicate a preferred resources directory, using the default directory: \(resourcesDirectoryPath)\n")
             print("\nYou did not indicate a preferred resources directory, using the default directory: \(resourcesDirectoryPath)")
         }
         
@@ -95,24 +95,24 @@ struct CanaryTest//: ParsableCommand
             interfaceName = name
         }
         
-        globalRunningLog.updateLog("Selected an interface for running test: \(interfaceName)\n")
+        uiLog.info("Selected an interface for running test: \(interfaceName)\n")
         
         canaryTestQueue.async {
             for i in 1...testCount
             {
-                globalRunningLog.updateLog("\n***************************\nRunning test batch \(i) of \(testCount)\n***************************\n")
+                uiLog.info("\n***************************\nRunning test batch \(i) of \(testCount)\n***************************\n")
                 print("\n***************************\nRunning test batch \(i) of \(testCount)\n***************************")
                 
                 for transport in allTransports
                 {
-                    globalRunningLog.updateLog("\n 🧪 Starting test for \(transport.name) 🧪")
-                    print("\n 🧪 Starting test for \(transport.name) 🧪\n")
+                    uiLog.log(level: .info, "\n 🧪 Starting test for \(transport.name) 🧪")
+                    //print("\n 🧪 Starting test for \(transport.name) 🧪\n")
                     TestController.sharedInstance.test(name: transport.name, serverIPString: serverIP, port: transport.port, interface: interfaceName, webAddress: nil)
                 }
                 
                 for webTest in allWebTests
                 {
-                    globalRunningLog.updateLog("\n 🧪 Starting web test for \(webTest.website) 🧪")
+                    uiLog.info("\n 🧪 Starting web test for \(webTest.website) 🧪")
                     TestController.sharedInstance.test(name: webTest.name, serverIPString: serverIP, port: webTest.port, interface: interfaceName, webAddress: webTest.website)
                 }
                 
@@ -123,7 +123,7 @@ struct CanaryTest//: ParsableCommand
         
         
         //ShapeshifterController.sharedInstance.killAllShShifter()
-        globalRunningLog.updateLog("\nCanary tests are complete.\n")
+        uiLog.info("\nCanary tests are complete.\n")
         globalRunningLog.updateState(runningTests: false)
     }
     
@@ -162,7 +162,7 @@ struct CanaryTest//: ParsableCommand
         guard FileManager.default.fileExists(atPath: resourcesDirectoryPath)
         else
         {
-            globalRunningLog.updateLog("\nResource directory does not exist at \(resourcesDirectoryPath).\n")
+            uiLog.info("\nResource directory does not exist at \(resourcesDirectoryPath).\n")
             print("Resource directory does not exist at \(resourcesDirectoryPath).")
             return false
         }
@@ -177,19 +177,19 @@ struct CanaryTest//: ParsableCommand
                 guard FileManager.default.fileExists(atPath:"\(resourcesDirectoryPath)/\(shSocksFilePath)")
                 else
                 {
-                    globalRunningLog.updateLog("Shadowsocks config not found at \(resourcesDirectoryPath)/\(shSocksFilePath)")
+                    uiLog.info("Shadowsocks config not found at \(resourcesDirectoryPath)/\(shSocksFilePath)")
                     return false
                 }
             case replicant:
                 guard FileManager.default.fileExists(atPath:"\(resourcesDirectoryPath)/\(replicantFilePath)")
                 else
                 {
-                    globalRunningLog.updateLog("Replicant config not found at \(resourcesDirectoryPath)/\(replicantFilePath)")
+                    uiLog.info("Replicant config not found at \(resourcesDirectoryPath)/\(replicantFilePath)")
                     print("Replicant config not found at \(resourcesDirectoryPath)/\(replicantFilePath)")
                     return false
                 }
             default:
-                globalRunningLog.updateLog("\nTried to test a transport that has no config file. Transport name: \(transport.name)\n")
+                uiLog.info("\nTried to test a transport that has no config file. Transport name: \(transport.name)\n")
                 print("Tried to test a transport that has no config file. Transport name: \(transport.name)")
                 return false
             }
@@ -201,7 +201,7 @@ struct CanaryTest//: ParsableCommand
             guard let _ = Transmission.Connection(host: serverIP, port: Int(string: allTransports[0].port), type: .tcp)
             else
             {
-                globalRunningLog.updateLog("\nFailed to connect to the transport server.\n")
+                uiLog.info("\nFailed to connect to the transport server.\n")
                 return false
             }
         }

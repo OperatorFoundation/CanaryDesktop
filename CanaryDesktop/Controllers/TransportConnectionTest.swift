@@ -41,7 +41,7 @@ class TransportConnectionTest
             
             if let error = maybeError
             {
-                globalRunningLog.updateLog("\nError reading data for transport connection: \(error)\n")
+                uiLog.info("\nError reading data for transport connection: \(error)\n")
                 completionHandler(self.readBuffer)
                 return
             }
@@ -69,7 +69,7 @@ class TransportConnectionTest
     
     func run() -> Bool
     {
-        globalRunningLog.updateLog("\n📣 Running transport connection test.")
+        uiLog.info("\n📣 Running transport connection test.")
         
         let maybeError = Synchronizer.sync(self.send)
         if let error = maybeError
@@ -82,14 +82,14 @@ class TransportConnectionTest
         guard let responseData = response
             else
         {
-            globalRunningLog.updateLog("🚫 We did not receive a response 🚫\n")
+            uiLog.info("🚫 We did not receive a response 🚫\n")
                 return false
         }
         
         guard let responseString = String(data: responseData, encoding: .utf8)
         else
         {
-            globalRunningLog.updateLog("We could not convert the response data into a string \(responseData)\n")
+            uiLog.info("We could not convert the response data into a string \(responseData)\n")
             return false
         }
         
@@ -110,13 +110,13 @@ class TransportConnectionTest
         {
             if canaryString == payloadString
             {
-                globalRunningLog.updateLog("\n💕 🐥 It works! 🐥 💕")
+                uiLog.info("\n💕 🐥 It works! 🐥 💕")
                 return true
             }
             else
             {
-                globalRunningLog.updateLog("\n🖤  We connected but the data did not match. 🖤")
-                globalRunningLog.updateLog("\nHere's what we got back instead of what we expected: \(payloadString)\n")
+                uiLog.info("\n🖤  We connected but the data did not match. 🖤")
+                uiLog.info("\nHere's what we got back instead of what we expected: \(payloadString)\n")
                 
                 return false
             }

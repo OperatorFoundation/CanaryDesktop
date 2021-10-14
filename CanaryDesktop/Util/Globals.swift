@@ -6,22 +6,15 @@
 //
 
 import Foundation
+import Logging
 
-
+var uiLog = Logger(label: "org.OperatorFoundation.CanaryDesktopUI", factory: CanaryLogHandler.init)
 var globalRunningLog = RunningLog()
-
 
 class RunningLog: ObservableObject
 {
     @Published var testsAreRunning = false
     @Published var logString: String = ""
-    
-    func updateLog(_ newMessage: String)
-    {
-        DispatchQueue.main.async { [self] in
-            logString += newMessage
-        }
-    }
     
     func updateState(runningTests: Bool)
     {
