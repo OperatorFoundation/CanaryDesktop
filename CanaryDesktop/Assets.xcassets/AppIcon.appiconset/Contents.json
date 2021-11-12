@@ -26,11 +26,13 @@
       "size" : "128x128"
     },
     {
+      "filename" : "CanaryIcon1_256.jpg",
       "idiom" : "mac",
       "scale" : "2x",
       "size" : "128x128"
     },
     {
+      "filename" : "CanaryIcon1_256-1.jpg",
       "idiom" : "mac",
       "scale" : "1x",
       "size" : "256x256"

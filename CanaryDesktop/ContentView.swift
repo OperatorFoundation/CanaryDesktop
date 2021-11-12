@@ -9,9 +9,10 @@ import SwiftUI
 import Network
 import ArgumentParser
 
+import Canary
+
 struct ContentView: View
 {
-    
     @ObservedObject var runningLog = globalRunningLog
     
     @State private var ipStringMessage = ""
@@ -80,7 +81,6 @@ struct ContentView: View
                         }
                     }
                 }
-                .disabled(globalRunningLog.testsAreRunning)
             }
             Divider()
             Section() // Number of runs
@@ -112,16 +112,15 @@ struct ContentView: View
                     if (isValidIP && isValidConfigPath)
                     {
                         runningLog.logString += "\nRunning Canary tests. This may take a few moments.\n"
-                        var test = CanaryTest(serverIP: serverIP, testCount: testCount)
-                        test.resourceDirPath = configPath
-                        test.runTest()
+                        let canary = Canary(serverIP: serverIP, configPath: configPath, logger: uiLog, timesToRun: testCount, interface: nil)
+                        canary.runTest()
                     }
                     else
                     {
                         runningLog.logString += "\nFailed to run the requested tests, please check that you entered a valid IP address, and that the config directory you selected has the correct transport config files.\n"
                     }
                 }
-                .disabled(globalRunningLog.testsAreRunning)
+                .disabled(isValidConfigPath == false || isValidIP == false)
                 .padding(.top)
             }
             Divider()

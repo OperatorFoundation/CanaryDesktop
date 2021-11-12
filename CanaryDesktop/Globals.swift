@@ -8,18 +8,13 @@
 import Foundation
 import Logging
 
+let serverIPKey = "ServerIP"
+let configPathKey = "ConfigPath"
+
 var uiLog = Logger(label: "org.OperatorFoundation.CanaryDesktopUI", factory: CanaryLogHandler.init)
 var globalRunningLog = RunningLog()
 
 class RunningLog: ObservableObject
 {
-    @Published var testsAreRunning = false
     @Published var logString: String = ""
-    
-    func updateState(runningTests: Bool)
-    {
-        DispatchQueue.main.async {
-            self.testsAreRunning = runningTests
-        }
-    }
 }
