@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Network
-import ArgumentParser
 
 import Canary
 
@@ -112,7 +111,7 @@ struct ContentView: View
                     if (isValidIP && isValidConfigPath)
                     {
                         runningLog.logString += "\nRunning Canary tests. This may take a few moments.\n"
-                        let canary = Canary(serverIP: serverIP, configPath: configPath, logger: uiLog, timesToRun: testCount, interface: nil)
+                        let canary = Canary(serverIP: serverIP, configPath: configPath, logger: uiLog, timesToRun: testCount, interface: nil, debugPrints: false)
                         canary.runTest()
                     }
                     else
