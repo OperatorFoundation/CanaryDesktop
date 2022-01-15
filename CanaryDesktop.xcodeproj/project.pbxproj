@@ -16,11 +16,7 @@
 		AE758ED826BDD4340049CE4B /* CanaryDesktopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758ED726BDD4340049CE4B /* CanaryDesktopTests.swift */; };
 		AE758EE326BDD4340049CE4B /* CanaryDesktopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE758EE226BDD4340049CE4B /* CanaryDesktopUITests.swift */; };
 		AE758F0726BDDDC10049CE4B /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = AE758F0626BDDDC10049CE4B /* Logging */; };
-		AE9C31C526BDEB6D00D70C5C /* Chord in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31C426BDEB6D00D70C5C /* Chord */; };
-		AE9C31CE26BDEC5600D70C5C /* Transmission in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31CD26BDEC5600D70C5C /* Transmission */; };
-		AE9C31D126BDEE2100D70C5C /* SwiftQueue in Frameworks */ = {isa = PBXBuildFile; productRef = AE9C31D026BDEE2100D70C5C /* SwiftQueue */; };
 		AECC0ABF26D99A4100562F26 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AECC0ABE26D99A4100562F26 /* Globals.swift */; };
-		AEE13D4326BDE66600046E38 /* Datable in Frameworks */ = {isa = PBXBuildFile; productRef = AEE13D4226BDE66600046E38 /* Datable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,11 +60,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE0919F3271A4E8D002E45EF /* Canary in Frameworks */,
-				AE9C31D126BDEE2100D70C5C /* SwiftQueue in Frameworks */,
 				AE758F0726BDDDC10049CE4B /* Logging in Frameworks */,
-				AE9C31C526BDEB6D00D70C5C /* Chord in Frameworks */,
-				AEE13D4326BDE66600046E38 /* Datable in Frameworks */,
-				AE9C31CE26BDEC5600D70C5C /* Transmission in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,10 +160,6 @@
 			name = CanaryDesktop;
 			packageProductDependencies = (
 				AE758F0626BDDDC10049CE4B /* Logging */,
-				AEE13D4226BDE66600046E38 /* Datable */,
-				AE9C31C426BDEB6D00D70C5C /* Chord */,
-				AE9C31CD26BDEC5600D70C5C /* Transmission */,
-				AE9C31D026BDEE2100D70C5C /* SwiftQueue */,
 				AE0919F2271A4E8D002E45EF /* Canary */,
 			);
 			productName = CanaryDesktop;
@@ -221,7 +209,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1250;
-				LastUpgradeCheck = 1300;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					AE758EC026BDD4320049CE4B = {
 						CreatedOnToolsVersion = 12.5.1;
@@ -247,10 +235,6 @@
 			mainGroup = AE758EB826BDD4320049CE4B;
 			packageReferences = (
 				AE758F0526BDDDC10049CE4B /* XCRemoteSwiftPackageReference "swift-log" */,
-				AEE13D4126BDE66600046E38 /* XCRemoteSwiftPackageReference "Datable" */,
-				AE9C31C326BDEB6D00D70C5C /* XCRemoteSwiftPackageReference "Chord" */,
-				AE9C31CC26BDEC5600D70C5C /* XCRemoteSwiftPackageReference "Transmission" */,
-				AE9C31CF26BDEE2100D70C5C /* XCRemoteSwiftPackageReference "SwiftQueue" */,
 				AE0919F1271A4E8D002E45EF /* XCRemoteSwiftPackageReference "Canary" */,
 			);
 			productRefGroup = AE758EC226BDD4320049CE4B /* Products */;
@@ -631,8 +615,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/OperatorFoundation/Canary.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
+				branch = main;
+				kind = branch;
 			};
 		};
 		AE758F0526BDDDC10049CE4B /* XCRemoteSwiftPackageReference "swift-log" */ = {
@@ -641,38 +625,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 1.4.2;
-			};
-		};
-		AE9C31C326BDEB6D00D70C5C /* XCRemoteSwiftPackageReference "Chord" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OperatorFoundation/Chord.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.15;
-			};
-		};
-		AE9C31CC26BDEC5600D70C5C /* XCRemoteSwiftPackageReference "Transmission" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OperatorFoundation/Transmission.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
-		AE9C31CF26BDEE2100D70C5C /* XCRemoteSwiftPackageReference "SwiftQueue" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OperatorFoundation/SwiftQueue.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.2;
-			};
-		};
-		AEE13D4126BDE66600046E38 /* XCRemoteSwiftPackageReference "Datable" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/OperatorFoundation/Datable";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -687,26 +639,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = AE758F0526BDDDC10049CE4B /* XCRemoteSwiftPackageReference "swift-log" */;
 			productName = Logging;
-		};
-		AE9C31C426BDEB6D00D70C5C /* Chord */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE9C31C326BDEB6D00D70C5C /* XCRemoteSwiftPackageReference "Chord" */;
-			productName = Chord;
-		};
-		AE9C31CD26BDEC5600D70C5C /* Transmission */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE9C31CC26BDEC5600D70C5C /* XCRemoteSwiftPackageReference "Transmission" */;
-			productName = Transmission;
-		};
-		AE9C31D026BDEE2100D70C5C /* SwiftQueue */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AE9C31CF26BDEE2100D70C5C /* XCRemoteSwiftPackageReference "SwiftQueue" */;
-			productName = SwiftQueue;
-		};
-		AEE13D4226BDE66600046E38 /* Datable */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = AEE13D4126BDE66600046E38 /* XCRemoteSwiftPackageReference "Datable" */;
-			productName = Datable;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

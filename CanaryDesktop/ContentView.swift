@@ -16,9 +16,7 @@ struct ContentView: View
     
     @State private var ipStringMessage = ""
     @State private var isEditing = false
-    @State private var isValidIP = false
     @State private var isValidConfigPath = false
-    @State private var serverIP = UserDefaults.standard.string(forKey: serverIPKey) ?? ""
     @State private var testCount = 1
     @State private var configPath = UserDefaults.standard.string(forKey: configPathKey) ?? "Config Directory Needed"
         
@@ -26,37 +24,10 @@ struct ContentView: View
     {
         VStack()
         {
-            Section(header:Text("Transport Server").bold()) // Server IP
-            {
-                TextField("Enter the transport server IP", text: $serverIP)
-                {
-                    (isEditing) in
-                    
-                    self.isEditing = isEditing
-                }
-                .onChange(of: serverIP)
-                {
-                    value in
-                    
-                    isValidIP = validate(serverIP: serverIP)
-                    
-                    if (isValidIP)
-                    {
-                        UserDefaults.standard.set(self.serverIP, forKey: serverIPKey)
-                    }
-                }
-                .padding([.top, .leading, .trailing])
-                .disableAutocorrection(true)
-                .multilineTextAlignment(.center)
-                
-                Text(serverIP)
-                    .foregroundColor(!isValidIP ? .red : .blue)
-            }
-            Divider()
             Section(header: Text("Transport Config Files").bold()) // Configs Folder
             {
                 Text(configPath)
-                    .foregroundColor(isValidIP ? .blue: .red)
+                    .foregroundColor(isValidConfigPath ? .blue: .red)
                     .padding(.top)
                 
                 
@@ -108,10 +79,10 @@ struct ContentView: View
             {
                 Button("Run Test")
                 {
-                    if (isValidIP && isValidConfigPath)
+                    if (isValidConfigPath)
                     {
                         runningLog.logString += "\nRunning Canary tests. This may take a few moments.\n"
-                        let canary = Canary(serverIP: serverIP, configPath: configPath, logger: uiLog, timesToRun: testCount, interface: nil, debugPrints: false)
+                        let canary = Canary(configPath: configPath, logger: uiLog, timesToRun: testCount, interface: nil, debugPrints: false)
                         canary.runTest()
                     }
                     else
@@ -119,7 +90,7 @@ struct ContentView: View
                         runningLog.logString += "\nFailed to run the requested tests, please check that you entered a valid IP address, and that the config directory you selected has the correct transport config files.\n"
                     }
                 }
-                .disabled(isValidConfigPath == false || isValidIP == false)
+                .disabled(isValidConfigPath == false)
                 .padding(.top)
             }
             Divider()
@@ -134,6 +105,7 @@ struct ContentView: View
             
             ScrollView
             {
+                // TODO: add .textSelection(.enabled) when appropriate to discontinue support of macOS 11 (only available on macOS 12+)
                 Text(runningLog.logString)
                     .id(0)
                     .onChange(of: runningLog.logString)
@@ -147,17 +119,17 @@ struct ContentView: View
         .onAppear()
         {
             
-            isValidIP = validate(serverIP: serverIP)
+            //isValidIP = validate(serverIP: serverIP)
             isValidConfigPath = validate(configURL: URL(string: configPath))
         }
         .padding(.vertical)
     }
     
-    func validate(serverIP: String) -> Bool
-    {
-        var sin = sockaddr_in()
-            return serverIP.withCString({ cstring in inet_pton(AF_INET, cstring, &sin.sin_addr) }) == 1
-    }
+//    func validate(serverIP: String) -> Bool
+//    {
+//        var sin = sockaddr_in()
+//            return serverIP.withCString({ cstring in inet_pton(AF_INET, cstring, &sin.sin_addr) }) == 1
+//    }
     
     func validate(configURL: URL?) -> Bool
     {
