@@ -11,7 +11,7 @@ import Logging
 let serverIPKey = "ServerIP"
 let configPathKey = "ConfigPath"
 
-var uiLog = Logger(label: "org.OperatorFoundation.CanaryDesktopUI", factory: CanaryLogHandler.init)
+var uiLog = Logger(label: "CanaryDesktop.MacOS", factory: CanaryLogHandler.init)
 var globalRunningLog = RunningLog()
 
 class RunningLog: ObservableObject
